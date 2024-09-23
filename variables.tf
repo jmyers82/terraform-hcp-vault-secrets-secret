@@ -46,7 +46,6 @@ variable "secret_name" {
 variable "secret_value" {
   description = "The value of the secret being stored."
   type        = string
-  sensitive   = true
   validation {
     condition     = length(var.secret_value) > 0
     error_message = "The secret value must not be empty."
@@ -61,8 +60,8 @@ variable "secret_value" {
 variable "project_name" {
   description = "The project id for the vault secrets app"
   type        = string
-  validation {
-    condition     = can(regex("^(sales-dept|service-dept|marketing-dept|engineering-dept|finance-dept)$", var.project_name))
-    error_message = "Invalid project selected, only allowed projects are: 'sales-dept', 'service-dept', 'marketing-dept', 'engineering-dept', 'finance-dept'"
-  }
+  # validation {
+  #   condition     = can(regex("^(sales-dept|service-dept|marketing-dept|engineering-dept|finance-dept)$", var.project_name))
+  #   error_message = "Invalid project selected, only allowed projects are: 'sales-dept', 'service-dept', 'marketing-dept', 'engineering-dept', 'finance-dept'"
+  # }
 }
